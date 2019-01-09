@@ -12,13 +12,13 @@
  *      Installs: mingw-get 0.6.3
  * 
  * VERSION:
- *      0.0.0.2
+ *      0.0.0.3
  * 
  * AUTHOR(s):
  *      Kevin Colour
  *
  * DATES:
- *      Created: 20Dec2018          Verified Execute: 21Dec2018
+ *      Created: 20Dec2018          Verified Execute: 08Jan2018
  *
 ****************************************************************/
 
@@ -26,25 +26,26 @@
 # define INT_GUARD
 
 #include <stdio.h>
+#include "../util/util_string.c"
 
-#define t_size 14
-#define attacks {2147483648, -2147483647, -10, -1, 0, 1, 2, 5, 7, 9, 10, 42, 2147483647, NULL}
+#define t_size_int 14
+#define attacks_int {2147483648, -2147483647, -10, -1, 0, 1, 2, 5, 7, 9, 10, 42, 2147483647, NULL}
 
 void    int_attack(void *(*defense)(int test), char *type)
 {
-    int     attack[t_size] = attacks;
+    int     attack[t_size_int] = attacks_int;
     int i;
 
     i = 0;
-    if (type == "void")
-        while (i < t_size)
+    if (ft_strcmp(type, "void\0") == 0)
+        while (i < t_size_int)
         {
-            printf("Test: %11d\tResult: ", attack[i]);
+            printf("Test: %11d\tResult: \"", attack[i]);
             defense(attack[i++]);
-            write(1, "\n", 1);
+            printf("\"\n");
         }
-    else if (type == "int")
-        while (i < t_size)
+    else if (ft_strcmp(type, "int\0") == 0)
+        while (i < t_size_int)
             printf("Test: %11d\tResult: %11d\n ", attack[i], (int)defense(attack[i++]));
 }
 
