@@ -11,20 +11,29 @@
  *      Installs: mingw-get 0.6.3
  * 
  * VERSION:
- *      0.0.0.1
+ *      0.0.0.2
  * 
  * AUTHOR(s):
  *      Kevin Colour
  *
  * DATES:
- *      Created: 23Dec2018          Verified Execute: 08Jan2018
+ *      Created: 23Dec2018          Verified Execute: 09Jan2019
  *
 ****************************************************************/
 
 #ifndef UTIL_STRING
 # define UTIL_STRING
 
-int     ft_strcmp(char *s1, char *s2)
+int     str_len(char *str)
+{
+    char *head;
+
+    head = str;
+    while (*str && str++);
+    return (str - head);
+}
+
+int     str_cmp(char *s1, char *s2)
 {
     while (*s1 && *s2 && *s1 == *s2)
     {
@@ -32,6 +41,17 @@ int     ft_strcmp(char *s1, char *s2)
         s2++;
     }
     return (*s2 - *s1);
+}
+
+char    *str_cpy(char *dest, char *src)
+{
+    char *head;
+
+    head = dest;
+    while (*src)
+        *dest++ = *src++;
+    *dest = '\0';
+    return (head);
 }
 
 #endif
