@@ -18,7 +18,7 @@
  *      Kevin Colour
  *
  * DATES:
- *      Created: 23Dec2018          Verified Execute: 08Jan2018
+ *      Created: 23Dec2018          Verified Execute: 08Jan2019
  *
 ****************************************************************/
 
@@ -33,15 +33,15 @@ void    pointer_check(void (defense)(void *test), void *intended, char *type, in
     void **ptrs;
     void *result;
 
-    ptrs = pointer_inception(size);
+    ptrs = pointer_inception(size); 
     defense(ptrs[size - 1]);
-    if (ft_strcmp(type, "int\0") == 0)
+    if (str_cmp(type, "int\0") == 0)
     {
         result = (int)pointer_undo(ptrs[size - 1], size);
         if (result == *(int*)intended)
-            printf("PASSED.\nExpected value: %d. You returned: %d\n", *(int *)(intended), result);
+            printf("PASSED.\nExpected value: %d. You returned: %d\n", *(int*)(intended), result);
         else
-            printf("FAILED. Expected value: %d you returned: %d\n", *(int *)(intended), result);
+            printf("FAILED. \nExpected value: %d you returned: %d\n", *(int*)(intended), result);
     }
     else
         printf("FAILED. Reason unknown.\n");
