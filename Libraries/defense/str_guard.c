@@ -1,5 +1,5 @@
 /**************************************************************
- * FILENAME:    str_gaurd.c            REF: DL_LDEF_util
+ * FILENAME:    str_guard.c            REF: DL_LDEF_util
  * 
  * DESCRIPTION:
  *      Libarary of functions to preform an attack suite on a
