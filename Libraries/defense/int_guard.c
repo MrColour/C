@@ -12,13 +12,13 @@
  *      Installs: mingw-get 0.6.3
  * 
  * VERSION:
- *      0.0.0.4
+ *      0.0.0.5
  * 
  * AUTHOR(s):
  *      Kevin Colour
  *
  * DATES:
- *      Created: 20Dec2018          Verified Execute: 08Jan2019
+ *      Created: 20Dec2018          Verified Execute: 11Jan2019
  *
 ****************************************************************/
 
@@ -36,17 +36,44 @@ void    int_attack(void *(*defense)(int test), char *type)
     int     attack[t_size_int] = int_attacks;
     int i;
 
-    i = 0;
+    i = -1;
     if (str_cmp(type, "void\0") == 0)
-        while (i < t_size_int)
+        while (++i < t_size_int)
         {
             printf("Test: %11d\tResult: \"", attack[i]);
-            defense(attack[i++]);
+            defense(attack[i]);
             printf("\"\n");
         }
     else if (str_cmp(type, "int\0") == 0)
-        while (i < t_size_int)
-            printf("Test: %11d\tResult: %11d\n ", attack[i], (int)defense(attack[i++]));
+        while (++i < t_size_int)
+            printf("Test: %11d\tResult: %11d\n", attack[i], (int)defense(attack[i]));
+            
+}
+
+void    supressed_int_attack(void *(*defense)(int test), char *type)
+{
+    int     attack[t_size_int] = int_attacks;
+    int i;
+
+    i = -1;
+    if (str_cmp(type, "void\0") == 0)
+        while (++i < t_size_int)
+        {
+            printf("Result: \"");
+            defense(attack[i]);
+            printf("\"\n");
+        }
+    else if (str_cmp(type, "int\0") == 0)
+        while (++i < t_size_int)
+            printf("Result: %11d\n", (int)defense(attack[i]));
+}
+
+void    int_range_attack(void *(*defense)(int test), char *type, int min, int max)
+{
+    min = min - 1;
+    if (str_cmp(type, "int\0") == 0)
+        while (min++ < max)
+            printf("Test: %11d\tResult: %11d\n", min, (int)defense(min));
 }
 
 #endif
