@@ -12,13 +12,13 @@
  *      Installs: mingw-get 0.6.3
  * 
  * VERSION:
- *      0.0.0.2
+ *      0.0.0.3
  * 
  * AUTHOR(s):
  *      Kevin Colour
  *
  * DATES:
- *      Created: 20Dec2018          Verified Execute: 21Dec2018
+ *      Created: 20Dec2018          Verified Execute: 12Jan2018
  *
 ****************************************************************/
 
@@ -31,9 +31,9 @@
 int rand_min_max(int min, int max)
 {
     int a;
-    if (min > max)
+    if (min >= max)
         return (int)NULL;
-    a = (rand() % (max - min)) + min;
+    a = (rand() % (max + 1 - min)) + min;
     return a;
 }
 
