@@ -12,13 +12,13 @@
  *      Installs: mingw-get 0.6.3
  * 
  * VERSION:
- *      0.0.0.3
+ *      0.0.0.4
  * 
  * AUTHOR(s):
  *      Kevin Colour
  *
  * DATES:
- *      Created: 07Jan2019          Verified Execute: 09Jan2019
+ *      Created: 07Jan2019          Verified Execute: 12Jan2019
  *
 ****************************************************************/
 
@@ -29,12 +29,16 @@
 #include <stdlib.h>
 #include "../util/util_string.c"
 
-#define t_size_str 11
-#define str_attacks {"abcdef", "Test\0", "Test 2\0", " \0", "\0", " 42 \n 3 \t.\0", "-123\0", "+123\0", "+-10\0", "-0\0", "087 iou\0"}
+#define t_size_str 17
+#define str_attacks {"abcdef", "Test\0", "Test 2\0",\
+     " \0", "\0", " 42 \n 3 \t.\0", "-123\0",\
+     "+123\0", "+-10\0", "-0\0", "087 iou\0",\
+     "7hf .ias .Iw g.O\0", "a\0", "A\0", ">\0",\
+     "1231\0", "1\0"}
 
 void    str_attack_m(void *(*defense)(char *test), char *type)
 {
-    int i;
+    int     i;
     char    *attack[t_size_str];
     char    *source[t_size_str] = str_attacks;
 
