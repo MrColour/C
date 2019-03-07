@@ -28,8 +28,8 @@
 #include <stdio.h>
 #include "../util/util_string.c"
 
-#define t_size_int 14
-#define int_attacks {2147483648, -2147483647, -10, -1, 0, 1, 2, 5, 7, 9, 10, 42, 2147483647, NULL}
+#define t_size_int 16
+#define int_attacks {-2147483648, -2147483647, -10, -7, -1, -0, 0, 1, 2, 5, 7, 9, 10, 42, 2147483647, NULL}
 
 void    int_attack(void *(*defense)(int test), char *type)
 {
