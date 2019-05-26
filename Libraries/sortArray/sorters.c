@@ -45,6 +45,37 @@ void    sort_selection_sort(int *array, int size)
 //     return ;
 // }
 
+void	quicksort(int *arr, int size)
+{
+	int	i;
+	int	pivot_loc;
+	int	end;
+
+	if (size <= 1)
+		return ;
+	i = 0;
+	end = size - 1;
+	while (i <= end)
+	{
+		while (arr[i] < arr[size])
+			i++;
+		while (arr[end] > arr[size])
+			end--;
+		if (arr[i] > arr[size])
+			ft_swap(&arr[i--], &arr[end--]);
+		i++;
+	}
+	ft_swap(&arr[end + 1], &arr[size]);
+	pivot_loc = end;
+	quicksort(arr, pivot_loc);
+	quicksort(arr + pivot_loc, size - pivot_loc);
+}
+
+
+/*
+** Merge sort would work a lot better with linked list. Here the shifting
+** makes it preform less than optimal, but it does it in place...
+*/
 void    sort_merge_sort(int *array, int size)
 {
     int temp;
